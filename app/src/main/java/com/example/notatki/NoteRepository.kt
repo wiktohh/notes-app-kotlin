@@ -16,6 +16,10 @@ class NoteRepository(private val noteDao : NoteDao) {
         noteDao.insert(note)
     }
 
+    fun getNotesByCategory(category: String?): LiveData<List<Note>> {
+        return noteDao.getNotesByCategory(category)
+    }
+
     fun searchNotes(query: String): LiveData<List<Note>> {
         return noteDao.searchNotes(query)
     }

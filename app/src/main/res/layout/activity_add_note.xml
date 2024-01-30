@@ -23,29 +23,39 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:text="Cofnij" />
 
         <EditText
             android:id="@+id/editTextTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="8dp"
-            android:hint="Tytuł notatki"
+            android:hint="Title"
             android:inputType="text" />
 
         <EditText
             android:id="@+id/editTextDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="Opis notatki"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Description"
             android:inputType="textMultiLine" />
 
         <RadioGroup
             android:id="@+id/radioGroupCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:orientation="horizontal">
 
             <RadioButton
@@ -84,34 +94,38 @@
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:text="Yellow" />
 
-            <!-- Dodaj więcej RadioButton zależnie od potrzeb -->
 
         </RadioGroup>
 
         <RadioGroup
             android:id="@+id/priorityRadioGroup"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/radioGroupCategory"
-            android:layout_marginTop="16dp">
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/lowPriorityRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Niski" />
+                android:layout_weight="1"
+                android:text="Low" />
 
             <RadioButton
                 android:id="@+id/mediumPriorityRadioButton"
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Średni" />
+                android:text="Medium" />
 
             <RadioButton
                 android:id="@+id/highPriorityRadioButton"
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Wysoki" />
+                android:text="High" />
         </RadioGroup>
         <EditText
             android:id="@+id/dateEditText"
@@ -119,6 +133,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/priorityRadioGroup"
             android:hint="Select date"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:inputType="date"
             android:visibility="gone"
             android:focusable="false"
@@ -131,6 +147,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/dateEditText"
             android:hint="Select time"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:visibility="gone"
             android:focusable="false"
             android:focusableInTouchMode="false" />

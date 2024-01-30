@@ -24,6 +24,10 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         return repo.searchNotes(query)
     }
 
+    fun getNotesByCategory(category: String?): LiveData<List<Note>> {
+        return repo.getNotesByCategory(category)
+    }
+
     fun insert(note:Note) = viewModelScope.launch ( Dispatchers.IO ) {
         repo.insert(note)
     }

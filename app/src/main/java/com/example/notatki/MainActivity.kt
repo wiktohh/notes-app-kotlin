@@ -15,6 +15,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.RadioGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), IAdaptor {
 
     private lateinit var viewModel : MainViewModel
     private lateinit var adapter: NoteAdapter
+    private lateinit var radioGroupCategory: RadioGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,10 @@ class MainActivity : AppCompatActivity(), IAdaptor {
         viewModel.allNotes.observe(this, Observer {
             adapter.updateData(it)
         })
+        radioGroupCategory = findViewById(R.id.radioGroupCategory)
+        radioGroupCategory.setOnCheckedChangeListener { group, checkedId ->
+            filterNotesByCategory()
+        }
         val editTextSearch: EditText = findViewById(R.id.searchView)
         editTextSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -56,9 +62,23 @@ class MainActivity : AppCompatActivity(), IAdaptor {
             }
         })
     }
+    private fun filterNotesByCategory() {
+        val checkedRadioButtonId = radioGroupCategory.checkedRadioButtonId
+        val filteredCategory = when (checkedRadioButtonId) {
+            R.id.allColorRadioButton -> null
+            R.id.redColorRadioButton -> "#E89CB5"
+            R.id.blueColorRadioButton -> "#89CFF0"
+            R.id.greenColorRadioButton -> "#CADC79"
+            R.id.yellowColorRadioButton -> "#FDE456"
+            else -> null
+        }
+        viewModel.getNotesByCategory(filteredCategory)
+            .observe(this, { filteredNotes ->
+                adapter.updateData(filteredNotes)
+            })
+    }
     private fun filterNotes(query: String) {
         viewModel.searchNotes(query).observe(this, { filteredNotes ->
-            // Update the RecyclerView based on the filteredNotes list
             adapter.filterData(filteredNotes)
         })
 

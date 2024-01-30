@@ -66,10 +66,16 @@ class AddNoteActivity : AppCompatActivity() {
         val priorityRadioGroup: RadioGroup = findViewById(R.id.priorityRadioGroup)
         val categoryRadioGroup: RadioGroup = findViewById(R.id.radioGroupCategory)
 
+        val backBtn: Button = findViewById(R.id.backButton)
+        backBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         priorityRadioGroup.setOnCheckedChangeListener { _, checkedId ->
             selectedPriority = findViewById<RadioButton>(checkedId)?.text.toString()
             Log.d("priorytet", selectedPriority)
-            val isHighPriority = selectedPriority == "Wysoki"
+            val isHighPriority = selectedPriority == "High"
             dateEditText.visibility = if (isHighPriority) View.VISIBLE else View.GONE
             timeEditText.visibility = if (isHighPriority) View.VISIBLE else View.GONE
         }
@@ -109,7 +115,7 @@ class AddNoteActivity : AppCompatActivity() {
         val note = Note(title= titleInput, description = descriptionInput, category = category, priority = selectedPriority, notificationDate = notificationDate.toString())
 
         viewModel.insert(note)
-        if(selectedPriority=="Wysoki"){
+        if(selectedPriority=="High"){
             Log.d("Wchodzi", selectedPriority)
             scheduleNotification(note)
         }
