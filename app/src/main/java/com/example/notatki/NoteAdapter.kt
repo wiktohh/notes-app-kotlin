@@ -22,6 +22,7 @@ class NoteAdapter(private val listener:IAdaptor) : RecyclerView.Adapter<NoteAdap
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val titleView : TextView = itemView.findViewById(R.id.titleNote)
         val descriptionView : TextView = itemView.findViewById(R.id.descriptionNote)
+        val priorityView : TextView = itemView.findViewById(R.id.priorityView)
         val deleteButton : ImageView = itemView.findViewById(R.id.deleteButton)
         val editButton : ImageView = itemView.findViewById(R.id.editButton)
     }
@@ -42,6 +43,7 @@ class NoteAdapter(private val listener:IAdaptor) : RecyclerView.Adapter<NoteAdap
         val currentItem = allNotes[position]
         holder.titleView.text = currentItem.title
         holder.descriptionView.text = currentItem.description
+        holder.priorityView.text = currentItem.priority
         val backgroundColor = try {
             if (currentItem.category.isNotEmpty()) {
                 Color.parseColor(currentItem.category)
