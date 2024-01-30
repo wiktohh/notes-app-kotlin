@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
-        android:text="Cofnij" />
+        android:text="Back" />
 
     <EditText
         android:id="@+id/editTextTitle"
