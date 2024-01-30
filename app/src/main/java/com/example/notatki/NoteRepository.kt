@@ -1,6 +1,7 @@
 package com.example.notatki
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import com.example.notatki.data.Note
 import com.example.notatki.data.NoteDao
 import com.example.notatki.data.NoteDatabase
@@ -13,6 +14,10 @@ class NoteRepository(private val noteDao : NoteDao) {
 
     suspend fun insert(note: Note) = withContext(Dispatchers.IO) {
         noteDao.insert(note)
+    }
+
+    fun searchNotes(query: String): LiveData<List<Note>> {
+        return noteDao.searchNotes(query)
     }
 
     suspend fun delete(note: Note) = withContext(Dispatchers.IO) {

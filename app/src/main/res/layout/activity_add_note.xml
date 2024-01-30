@@ -46,19 +46,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButtonCategory1"
-                android:layout_width="wrap_content"
+                android:id="@+id/redColorRadioButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Kategoria 1" />
+                android:layout_weight="1"
+                android:buttonTint="@android:color/white"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:text="Red" />
 
             <RadioButton
-                android:id="@+id/radioButtonCategory2"
-                android:layout_width="wrap_content"
+                android:id="@+id/blueColorRadioButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Kategoria 2" />
+                android:layout_weight="1"
+                android:buttonTint="@android:color/white"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="Blue" />
+
+            <RadioButton
+                android:id="@+id/greenColorRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@android:color/white"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:text="Green" />
+
+            <RadioButton
+                android:id="@+id/yellowColorRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@android:color/white"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:text="Yellow" />
 
             <!-- Dodaj więcej RadioButton zależnie od potrzeb -->
 

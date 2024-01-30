@@ -16,6 +16,10 @@ abstract class NoteDao {
     @Delete
     abstract suspend fun delete(note: Note)
 
+
     @Query("SELECT * FROM noteTable")
     abstract fun getAll(): LiveData<List<Note>>
+
+    @Query("SELECT * FROM noteTable WHERE title LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%'")
+    abstract fun searchNotes(query: String): LiveData<List<Note>>
 }

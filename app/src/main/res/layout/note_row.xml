@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="16dp"
     android:layout_marginTop="32dp"
     android:orientation="vertical">
 
@@ -19,16 +20,20 @@
 
         <ImageView
             android:id="@+id/deleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_delete_24"
-            />
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/baseline_delete_32"
+            android:layout_gravity="center_vertical"
+             android:scaleType="centerInside"
+        />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/descriptionNote"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+/>
+
 
 </LinearLayout>

@@ -13,6 +13,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore.Audio.Radio
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
@@ -60,6 +62,7 @@ class AddNoteActivity : AppCompatActivity() {
         btn.setOnClickListener {
             addingNote()
         }
+
         val priorityRadioGroup: RadioGroup = findViewById(R.id.priorityRadioGroup)
         val categoryRadioGroup: RadioGroup = findViewById(R.id.radioGroupCategory)
 
@@ -95,7 +98,15 @@ class AddNoteActivity : AppCompatActivity() {
 
         Log.d("Priorytet podczas dodawania", selectedPriority)
 
-        val note = Note(title= titleInput, description = descriptionInput, category = selectedCategory, priority = selectedPriority, notificationDate = notificationDate.toString())
+        val category = when {
+            findViewById<RadioButton>(R.id.redColorRadioButton).isChecked -> "#E89CB5"
+            findViewById<RadioButton>(R.id.blueColorRadioButton).isChecked -> "#89CFF0"
+            findViewById<RadioButton>(R.id.greenColorRadioButton).isChecked -> "#CADC79"
+            findViewById<RadioButton>(R.id.yellowColorRadioButton).isChecked -> "#FDE456"
+            else -> "#FFFFFF"
+        }
+
+        val note = Note(title= titleInput, description = descriptionInput, category = category, priority = selectedPriority, notificationDate = notificationDate.toString())
 
         viewModel.insert(note)
         if(selectedPriority=="Wysoki"){

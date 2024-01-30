@@ -20,7 +20,9 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         repo = NoteRepository(dao)
         allNotes = repo.allNotes
     }
-
+    fun searchNotes(query: String): LiveData<List<Note>> {
+        return repo.searchNotes(query)
+    }
 
     fun insert(note:Note) = viewModelScope.launch ( Dispatchers.IO ) {
         repo.insert(note)
