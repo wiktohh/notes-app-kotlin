@@ -65,31 +65,51 @@
         </RadioGroup>
 
         <RadioGroup
-            android:id="@+id/radioGroupPriority"
+            android:id="@+id/priorityRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioGroupCategory"
+            android:layout_marginTop="16dp">
+
+            <RadioButton
+                android:id="@+id/lowPriorityRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Niski" />
+
+            <RadioButton
+                android:id="@+id/mediumPriorityRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Średni" />
+
+            <RadioButton
+                android:id="@+id/highPriorityRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wysoki" />
+        </RadioGroup>
+        <EditText
+            android:id="@+id/dateEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="vertical">
+            android:layout_below="@id/priorityRadioGroup"
+            android:hint="Select date"
+            android:inputType="date"
+            android:visibility="gone"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:onClick="showDatePickerDialog" />
 
-            <RadioButton
-                android:id="@+id/radioButtonPriorityHigh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wysoki priorytet" />
-
-            <RadioButton
-                android:id="@+id/radioButtonPriorityMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Średni priorytet" />
-
-            <RadioButton
-                android:id="@+id/radioButtonPriorityLow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Niski priorytet" />
-
-        </RadioGroup>
+        <EditText
+            android:id="@+id/timeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dateEditText"
+            android:hint="Select time"
+            android:visibility="gone"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
 
         <Button
             android:id="@+id/buttonSave"
