@@ -16,6 +16,10 @@ class NoteRepository(private val noteDao : NoteDao) {
         noteDao.insert(note)
     }
 
+    suspend fun update(note: Note) = withContext(Dispatchers.IO) {
+        noteDao.update(note)
+    }
+
     fun getNotesByCategory(category: String?): LiveData<List<Note>> {
         return noteDao.getNotesByCategory(category)
     }

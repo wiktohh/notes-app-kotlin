@@ -6,6 +6,8 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
+import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -15,6 +17,9 @@ abstract class NoteDao {
 
     @Delete
     abstract suspend fun delete(note: Note)
+
+    @Upsert
+    abstract suspend fun update(note: Note)
 
     @Query("SELECT * FROM noteTable WHERE category = :category OR :category IS NULL")
     abstract fun getNotesByCategory(category: String?): LiveData<List<Note>>

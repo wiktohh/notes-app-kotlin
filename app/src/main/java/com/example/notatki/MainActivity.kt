@@ -88,6 +88,17 @@ class MainActivity : AppCompatActivity(), IAdaptor {
         val intent = Intent(this,AddNoteActivity::class.java)
         startActivity(intent)
     }
+    override fun onEditNoteClick(note: Note) {
+
+        val intent = Intent(this, EditNoteActivity::class.java)
+        Log.d("noteID w main ", note.id.toString())
+        intent.putExtra("noteId", note.id)
+        intent.putExtra("noteTitle", note.title)
+        intent.putExtra("noteDescription", note.description)
+        intent.putExtra("notePriority", note.priority)
+        intent.putExtra("noteCategory", note.category)
+        startActivity(intent)
+    }
 
 
     private fun createNotificationChannel() {

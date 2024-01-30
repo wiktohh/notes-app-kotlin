@@ -23,6 +23,7 @@ class NoteAdapter(private val listener:IAdaptor) : RecyclerView.Adapter<NoteAdap
         val titleView : TextView = itemView.findViewById(R.id.titleNote)
         val descriptionView : TextView = itemView.findViewById(R.id.descriptionNote)
         val deleteButton : ImageView = itemView.findViewById(R.id.deleteButton)
+        val editButton : ImageView = itemView.findViewById(R.id.editButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -42,13 +43,20 @@ class NoteAdapter(private val listener:IAdaptor) : RecyclerView.Adapter<NoteAdap
         holder.titleView.text = currentItem.title
         holder.descriptionView.text = currentItem.description
         val backgroundColor = try {
-            Color.parseColor(currentItem.category)
+            if (currentItem.category.isNotEmpty()) {
+                Color.parseColor(currentItem.category)
+            } else {
+                Color.parseColor("#FFFFFF") // Domyślny kolor, gdy category jest puste
+            }
         } catch (e: IllegalArgumentException) {
-            // Handle the case where parsing to color fails
-            ContextCompat.getColor(holder.itemView.context, android.R.color.white)
+            Color.parseColor("#FFFFFF") // Domyślny kolor w przypadku błędu parsowania
         }
 
+
         holder.itemView.setBackgroundColor(backgroundColor)
+        holder.editButton.setOnClickListener {
+            listener.onEditNoteClick(currentItem)
+        }
     }
 
     fun updateData(newData: List<Note>){
@@ -64,4 +72,5 @@ class NoteAdapter(private val listener:IAdaptor) : RecyclerView.Adapter<NoteAdap
 
 interface IAdaptor{
     fun onNoteClick(note:Note)
+    fun onEditNoteClick(note:Note)
 }

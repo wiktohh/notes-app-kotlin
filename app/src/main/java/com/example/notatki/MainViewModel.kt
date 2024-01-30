@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
-    val allNotes: LiveData<List<Note>>
+    var allNotes: LiveData<List<Note>>
     private val repo : NoteRepository
 
     init {
@@ -24,12 +24,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         return repo.searchNotes(query)
     }
 
+
     fun getNotesByCategory(category: String?): LiveData<List<Note>> {
         return repo.getNotesByCategory(category)
     }
 
+    fun refreshNotes() {
+        viewModelScope.launch(Dispatchers.Main) {
+            allNotes = repo.allNotes
+        }
+    }
+
     fun insert(note:Note) = viewModelScope.launch ( Dispatchers.IO ) {
         repo.insert(note)
+    }
+
+    fun update(note:Note) = viewModelScope.launch ( Dispatchers.IO ) {
+        repo.update(note)
     }
 
     fun delete(note:Note) = viewModelScope.launch ( Dispatchers.IO ) {
