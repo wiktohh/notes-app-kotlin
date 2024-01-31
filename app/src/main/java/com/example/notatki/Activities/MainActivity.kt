@@ -1,11 +1,7 @@
-package com.example.notatki
+package com.example.notatki.Activities
 
-import android.app.AlarmManager
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +16,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.notatki.Adapter.IAdaptor
+import com.example.notatki.Viewmodel.MainViewModel
+import com.example.notatki.Adapter.NoteAdapter
+import com.example.notatki.R
 import com.example.notatki.data.Note
-import com.example.notatki.databinding.ActivityAddNoteBinding
-import com.example.notatki.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), IAdaptor {
 
@@ -85,7 +83,7 @@ class MainActivity : AppCompatActivity(), IAdaptor {
     }
 
     fun addNote(view: View){
-        val intent = Intent(this,AddNoteActivity::class.java)
+        val intent = Intent(this, AddNoteActivity::class.java)
         startActivity(intent)
     }
     override fun onEditNoteClick(note: Note) {
@@ -102,9 +100,7 @@ class MainActivity : AppCompatActivity(), IAdaptor {
 
 
     private fun createNotificationChannel() {
-        Log.d("Przed", "XDDDDDDDDDDDDDDDDDDDDDDDDDDD")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Log.d("po", "XDDDDDDDDDDDDDDDDDDDDDDDDD")
             val name = "Channel Name"
             val descriptionText = "Channel Description"
             val importance = NotificationManager.IMPORTANCE_DEFAULT

@@ -1,13 +1,12 @@
-package com.example.notatki
+package com.example.notatki.Viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.notatki.Repository.NoteRepository
 import com.example.notatki.data.Note
 import com.example.notatki.data.NoteDatabase
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

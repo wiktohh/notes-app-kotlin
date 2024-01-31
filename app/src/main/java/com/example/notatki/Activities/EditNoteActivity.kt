@@ -1,15 +1,15 @@
-package com.example.notatki
+package com.example.notatki.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.lifecycle.ViewModelProvider
+import com.example.notatki.Viewmodel.MainViewModel
 import com.example.notatki.R
 import com.example.notatki.data.Note
 
@@ -83,13 +83,19 @@ class EditNoteActivity : AppCompatActivity() {
                 findViewById<RadioButton>(R.id.yellowColorRadioButton).isChecked -> "#FDE456"
                 else -> "#FFFFFF"
             }
-
+            val prio = when {
+                findViewById<RadioButton>(R.id.lowPriorityRadioButton).isChecked -> "Low"
+                findViewById<RadioButton>(R.id.mediumPriorityRadioButton).isChecked -> "Medium"
+                findViewById<RadioButton>(R.id.highPriorityRadioButton).isChecked -> "High"
+                else -> "None"
+            }
+            Log.d("priorytet", selectedPriority)
             if(noteId.toInt() != -1) {
                 val updatedNote = Note(
                     id = noteId,
                     title = updatedTitle,
                     description = updatedDescription,
-                    priority = selectedPriority,
+                    priority = prio,
                     category = category,
                 )
                 Log.d("notatka ", updatedNote.toString())

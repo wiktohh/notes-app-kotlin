@@ -1,4 +1,4 @@
-package com.example.notatki
+package com.example.notatki.Repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData

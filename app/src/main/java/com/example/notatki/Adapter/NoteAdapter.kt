@@ -1,21 +1,16 @@
-package com.example.notatki
+package com.example.notatki.Adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.notatki.R
 import com.example.notatki.data.Note
-import com.example.notatki.databinding.NoteRowBinding
-import kotlinx.coroutines.flow.Flow
 
-class NoteAdapter(private val listener:IAdaptor) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(private val listener: IAdaptor) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     private var allNotes = ArrayList<Note>()
 
